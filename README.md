@@ -1,1 +1,1 @@
-"# TTP-Assignment2-ArraysAndFunctions" 
+# TTP-Assignment2-ArraysAndFunctions
