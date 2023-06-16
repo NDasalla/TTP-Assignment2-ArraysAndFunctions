@@ -242,10 +242,10 @@ let myObj1 = { a: "x", b: "y", c: "z" };
 console.log(Object.grabKeys(myObj1));
 
 ////////////////////////////////////////////////////////////////
-/*Object.keys(): Added a new method to the Object data type using .prototype.
+/*Object.values(): Added a new method to the Object data type using .prototype.
 Inside the function, initialized an empty array for appending the keys.
 In the for loop, iterates through each element in passed object and appends
-the keys. Returns the array of keys.*/
+the values of each key-value pair. Returns the array of keys.*/
 Object.prototype.grabValues = (obj) => {
   const ret = [];
   for (const key in obj) {
