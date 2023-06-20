@@ -7,17 +7,17 @@ const sumOfRange = () => {
     The "else" checks if step is not provided.*/
     if (!!step && step >= 1) {
       for (let i = start; i <= end; i += step) {
-        console.log("step present, positive step");
+        // console.log("step present, positive step");
         ret.push(i);
       }
     } else if (!!step && step <= -1) {
       for (let i = start; i > end; i += step) {
-        console.log("step present, negative step");
+        // console.log("step present, negative step");
         ret.push(i);
       }
     } else {
       for (let i = start; i <= end; i++) {
-        console.log("step not present");
+        // console.log("step not present");
         ret.push(i);
       }
     }
@@ -38,6 +38,69 @@ const sumOfRange = () => {
 };
 
 //call sumOfRange() function to test
+console.log(`---The Sum of a Range Exercise---`);
 sumOfRange();
 
-const reverseArrays = () => {};
+const reverseArrays = () => {
+  const reverseArray = (arr) => {
+    const original = [...arr];
+    const ret = [];
+    // console.log(arr.length);
+    for (let i = arr.length - 1; i >= 0; i--) {
+      ret.push(original[i]);
+    }
+    return ret;
+  };
+  const reverseArrayInPlace = (arr) => {
+    for (let i = 0; i < Math.floor(arr.length / 2); i++) {
+      let indexDiff = arr.length - 1 - i;
+      let temp = arr[i];
+      arr[i] = arr[indexDiff];
+      arr[indexDiff] = temp;
+    }
+  };
+  console.log(reverseArray(["A", "B", "C"]));
+  // → ["C", "B", "A"];
+  let arrayValue = ["Cat", "The", "Don't", "Please"];
+  reverseArrayInPlace(arrayValue);
+  console.log(arrayValue);
+  // → [5, 4, 3, 2, 1]
+};
+
+console.log(`---Reversing an Array Exercise---`);
+reverseArrays();
+
+const lists = () => {
+  const arrayToList = (arr) => {
+    let list = null;
+    for (let i = arr.length - 1; i >= 0; i--) {
+      list = { value: arr[i], rest: list };
+    }
+    return list;
+  };
+  const listToArray = (list) => {
+    let arr = [];
+    for (let node = list; node; node = node.rest) {
+      arr.push(node.value);
+    }
+    return arr;
+  };
+  const prepend = (element, list) => {
+    // let ret = { ...list };
+    // let ret = null;
+    // ret = { value: element, rest: list }; //misc: rest = ret
+    return (ret = { value: element, rest: list });
+  };
+  const nth = (list, number) => {};
+  console.log(arrayToList([10, 20]));
+  // → {value: 10, rest: {value: 20, rest: null}}
+  console.log(listToArray(arrayToList([10, 20, 30])));
+  // → [10, 20, 30]
+  console.log(prepend(10, prepend(20, null)));
+  // → {value: 10, rest: {value: 20, rest: null}}
+  console.log(nth(arrayToList([10, 20, 30]), 1));
+  // → 20
+};
+
+console.log(`---A List Exercise---`);
+lists();
