@@ -91,7 +91,13 @@ const lists = () => {
     // ret = { value: element, rest: list }; //misc: rest = ret
     return (ret = { value: element, rest: list });
   };
-  const nth = (list, number) => {};
+  const nth = (list, number) => {
+    if (number === 0) {
+      return list.value;
+    } else {
+      return nth(list.rest, number - 1);
+    }
+  };
   console.log(arrayToList([10, 20]));
   // → {value: 10, rest: {value: 20, rest: null}}
   console.log(listToArray(arrayToList([10, 20, 30])));
@@ -104,3 +110,29 @@ const lists = () => {
 
 console.log(`---A List Exercise---`);
 lists();
+
+const deepComparison = () => {
+  const deepEqual = (obj1, obj2) => {
+    if (typeof obj1 === typeof obj2) {
+      if (typeof obj1 === "object" && obj1 !== null && obj2 !== null) {
+        return (
+          Object.keys(obj1).toString() === Object.keys(obj2).toString() &&
+          Object.values(obj1).toString() === Object.values(obj2).toString()
+        );
+      } else {
+        return obj1 === obj2;
+      }
+    }
+    return false;
+  };
+  let obj = { here: { is: "an" }, object: 2 };
+  console.log(deepEqual(obj, obj));
+  // → true
+  console.log(deepEqual(obj, { here: 1, object: 2 }));
+  // → false
+  console.log(deepEqual(obj, { here: { is: "an" }, object: 2 }));
+  // → true
+};
+
+console.log(`---Deep Comparison Exercise`);
+deepComparison();
